@@ -174,7 +174,7 @@ function getMaterialById(materialId) {
 function resetPaymentModal() {
     state.activeOrder = null;
     paymentTitle.textContent = "Complete your payment";
-    paymentSubtitle.textContent = "Noters accepts only UPI payments. The 20% platform fee is included in the listing total below.";
+    paymentSubtitle.textContent = "Noters accepts only UPI payments. The 5% platform fee is included in the listing total below.";
     paymentListingTitle.textContent = "Choose a listing";
     paymentTotalAmount.textContent = formatCurrency(0);
     paymentSellerShare.textContent = formatCurrency(0);
@@ -190,7 +190,7 @@ function resetPaymentModal() {
 
 function fillPaymentPreview(material) {
     paymentTitle.textContent = "Pay with UPI";
-    paymentSubtitle.textContent = "Only UPI payments are available. The total already includes the 20% platform fee.";
+    paymentSubtitle.textContent = "Only UPI payments are available. The total already includes the 5% platform fee.";
     paymentListingTitle.textContent = material.title;
     paymentTotalAmount.textContent = formatCurrency(material.price);
     paymentSellerShare.textContent = formatCurrency(material.seller_earnings);
@@ -230,8 +230,8 @@ function updateSessionUI() {
     if (hasSession()) {
         sessionTitle.textContent = `${state.user.name} is logged in as a ${state.user.role}`;
         sessionCopy.textContent = state.user.role === "seller"
-            ? "You can publish new listings below. Buyers pay by UPI, sellers keep 80%, and the platform keeps 20%."
-            : "You can search the marketplace and pay using UPI only. Each payment includes the 20% platform fee automatically.";
+            ? "You can publish new listings below. Buyers pay by UPI, sellers keep 95%, and the platform keeps 5%."
+            : "You can search the marketplace and pay using UPI only. Each payment includes the 5% platform fee automatically.";
         logoutButton.classList.remove("hidden");
     } else {
         sessionTitle.textContent = "Browsing as guest";
@@ -293,7 +293,7 @@ function renderMaterials() {
                     <div class="meta-row">
                         <span class="meta-chip">${escapeHtml(material.role_label)}</span>
                         <span class="meta-chip">UPI only</span>
-                        <span class="meta-chip">20% fee active</span>
+                        <span class="meta-chip">5% fee active</span>
                     </div>
                     <span>${escapeHtml(material.created_label)}</span>
                 </div>
