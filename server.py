@@ -13,7 +13,7 @@ from urllib.parse import parse_qs, urlencode, urlparse
 
 BASE_DIR = Path(__file__).resolve().parent
 DB_PATH = BASE_DIR / "noters.db"
-PLATFORM_FEE_RATE = 0.5 # 5% platform fee on each transaction
+PLATFORM_FEE_RATE = 0.05 # 5% platform fee on each transaction
 PLATFORM_UPI_ID = os.environ.get("PLATFORM_UPI_ID", "noters@upi")
 PLATFORM_UPI_NAME = os.environ.get("PLATFORM_UPI_NAME", "Noters Marketplace")
 SESSIONS: dict[str, int] = {}
