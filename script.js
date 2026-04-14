@@ -338,8 +338,8 @@ async function fetchMaterials(query = "") {
 
 function updatePayoutPreview() {
     const price = Number(listingPriceInput.value || 0);
-    const sellerShare = price * 0.8;
-    const platformShare = price * 0.2;
+    const sellerShare = price * 0.95;
+    const platformShare = price * 0.05;
 
     previewSellerShare.textContent = formatCurrency(sellerShare);
     previewPlatformShare.textContent = formatCurrency(platformShare);
