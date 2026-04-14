@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noters</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="top">
+    <div class="page-shell">
+        <header class="hero">
+            <nav class="topbar">
+                <div class="brand">
+                    <span class="brand-mark">N</span>
+                    <span class="brand-name">Noters</span>
+                </div>
+
+                <div class="nav-links">
+                    <a href="#accounts">Accounts</a>
+                    <a href="#marketplace">Marketplace</a>
+                    <a href="#seller-tools">Seller Tools</a>
+                </div>
+
+                <div class="nav-actions">
+                    <button type="button" class="ghost-button" data-auth-trigger="login" data-guest-only>Log in</button>
+                    <button type="button" class="solid-button" data-auth-trigger="signup" data-guest-only>Sign up</button>
+                </div>
+            </nav>
+
+            <section class="hero-content">
+                <div class="hero-copy">
+                    <p class="eyebrow">Buy and sell study material</p>
+                    <h1>Search notes, join as a buyer or seller, and run a simple study marketplace.</h1>
+                    <p class="hero-text">
+                        Noters now supports two account types. Buyers can find revision material fast,
+                        and sellers can publish their notes while keeping 95% of every sale. The platform
+                        keeps the remaining 5%.
+                    </p>
+
+                    <form class="search-card" id="search-form">
+                        <label for="study-search">Search your study material</label>
+                        <div class="search-row">
+                            <input
+                                id="study-search"
+                                type="text"
+                                placeholder="Try: biology notes, math formulas, history revision"
+                                autocomplete="off"
+                            >
+                            <button type="submit" class="solid-button">Search</button>
+                        </div>
+                        <p class="search-feedback" id="search-feedback">
+                            Search is active and connected to the marketplace listings below.
+                        </p>
+                    </form>
+
+                    <div class="hero-pills">
+                        <span>Buyer accounts</span>
+                        <span>Seller accounts</span>
+                        <span>5% platform fee</span>
+                        <span>UPI only payments</span>
+                        <span>Live search</span>
+                    </div>
+                </div>
+
+                <aside class="hero-panel">
+                    <div class="floating-card accent-card">
+                        <p>Seller payout</p>
+                        <h2>95%</h2>
+                        <span>Every listing shows the seller share and your 5% platform cut.</span>
+                    </div>
+                    <div class="floating-card soft-card">
+                        <p>Account types</p>
+                        <h3>2 roles</h3>
+                        <span>Join as a buyer to browse or as a seller to publish and manage notes.</span>
+                    </div>
+                </aside>
+            </section>
+        </header>
+
+        <main>
+            <section class="session-banner">
+                <div>
+                    <p class="eyebrow">Account status</p>
+                    <h2 id="session-title">Browsing as guest</h2>
+                    <p id="session-copy">
+                        Create a buyer or seller account to unlock role-based actions and seller tools.
+                    </p>
+                </div>
+                <button type="button" class="ghost-button hidden" id="logout-button">Logout</button>
+            </section>
+
+            <section class="section" id="accounts">
+                <div class="section-heading">
+                    <p class="eyebrow">Two categories</p>
+                    <h2>Sign up as a buyer or a seller</h2>
+                    <p>
+                        Buyers discover notes quickly. Sellers publish listings and see the 20% platform fee
+                        before posting.
+                    </p>
+                </div>
+
+                <div class="role-grid">
+                    <article class="role-card">
+                        <span class="role-badge">Buyer</span>
+                        <h3>Browse and purchase study material</h3>
+                        <p>Use search to find chapter notes, summaries, and formula banks in a few seconds.</p>
+                        <ul class="role-points">
+                            <li>Search available listings</li>
+                            <li>See subject, seller, and price instantly</li>
+                            <li>Keep a simple buyer account</li>
+                        </ul>
+                        <button type="button" class="solid-button wide-button" data-auth-trigger="signup" data-role="buyer" data-guest-only>
+                            Sign up as buyer
+                        </button>
+                    </article>
+
+                    <article class="role-card seller-card">
+                        <span class="role-badge">Seller</span>
+                        <h3>Upload notes and earn from every sale</h3>
+                        <p>Seller accounts can publish new materials and see payout math before listing.</p>
+                        <ul class="role-points">
+                            <li>Seller keeps 80% of the listing price</li>
+                            <li>Platform keeps 20% as your fee</li>
+                            <li>Publish directly from the seller tools section</li>
+                        </ul>
+                        <button type="button" class="solid-button wide-button" data-auth-trigger="signup" data-role="seller" data-guest-only>
+                            Sign up as seller
+                        </button>
+                    </article>
+                </div>
+            </section>
+
+            <section class="section marketplace-section" id="marketplace">
+                <div class="section-heading">
+                    <p class="eyebrow">Marketplace</p>
+                    <h2>Search and explore live study listings</h2>
+                    <p>
+                        The search bar above now filters these materials through the backend, so results update
+                        with real listing data. Checkout supports UPI payments only.
+                    </p>
+                </div>
+
+                <div class="marketplace-toolbar">
+                    <p class="result-summary" id="result-summary">Loading listings...</p>
+                    <a class="cta-button" href="#seller-tools">Go to seller tools</a>
+                </div>
+
+                <div class="materials-grid" id="materials-grid"></div>
+
+                <div class="empty-state hidden" id="empty-state">
+                    <h3>No listings found</h3>
+                    <p>Try another keyword or create a new seller listing.</p>
+                </div>
+            </section>
+
+            <section class="section seller-section" id="seller-tools">
+                <div class="seller-layout">
+                    <div class="seller-copy">
+                        <p class="eyebrow">Seller tools</p>
+                        <h2>Publish a listing with automatic payout calculation</h2>
+                        <p>
+                            Sign up or log in as a seller to add new notes. The backend stores the listing and
+                            automatically calculates the 20% platform fee and the seller's 80% share.
+                        </p>
+
+                        <div class="payout-card">
+                            <div>
+                                <span>Seller gets</span>
+                                <strong id="preview-seller-share">₹0.00</strong>
+                            </div>
+                            <div>
+                                <span>Platform gets</span>
+                                <strong id="preview-platform-share">₹0.00</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form class="seller-form" id="listing-form">
+                        <label for="listing-title">Listing title</label>
+                        <input id="listing-title" name="title" type="text" placeholder="Semester 2 Physics Quick Notes" required>
+
+                        <label for="listing-category">Category</label>
+                        <input id="listing-category" name="category" type="text" placeholder="Physics" required>
+
+                        <label for="listing-price">Price</label>
+                        <input id="listing-price" name="price" type="number" min="1" step="0.01" placeholder="199" required>
+
+                        <label for="listing-description">Description</label>
+                        <textarea id="listing-description" name="description" rows="4" placeholder="Chapter-wise notes, diagrams, and final revision points." required></textarea>
+
+                        <button type="submit" class="solid-button wide-button">Publish listing</button>
+                        <p class="form-message" id="listing-message">
+                            Seller access is required to create a listing.
+                        </p>
+                    </form>
+                </div>
+            </section>
+
+            <section class="section community-section" id="community">
+                <div>
+                    <p class="eyebrow">Next step</p>
+                    <h2>Log in, search, and start using the marketplace.</h2>
+                </div>
+                <button type="button" class="cta-button" data-auth-trigger="login" data-guest-only>Open login</button>
+            </section>
+        </main>
+    </div>
+
+    <div class="modal hidden" id="auth-modal" aria-hidden="true">
+        <div class="modal-panel">
+            <button type="button" class="close-button" id="close-modal" aria-label="Close authentication modal">
+                &times;
+            </button>
+
+            <p class="eyebrow">Account access</p>
+            <h2 id="auth-title">Create your account</h2>
+            <p class="modal-text" id="auth-subtitle">
+                Choose whether you want to join as a buyer or seller.
+            </p>
+
+            <div class="toggle-row">
+                <button type="button" class="mode-toggle active" data-mode-toggle="signup">Sign up</button>
+                <button type="button" class="mode-toggle" data-mode-toggle="login">Log in</button>
+            </div>
+
+            <div class="toggle-row role-toggle">
+                <button type="button" class="role-toggle-button active" data-role-toggle="buyer">Buyer</button>
+                <button type="button" class="role-toggle-button" data-role-toggle="seller">Seller</button>
+            </div>
+
+            <form class="auth-form" id="auth-form">
+                <label id="name-field">
+                    Full name
+                    <input id="auth-name" name="name" type="text" placeholder="Aaditya Batra">
+                </label>
+
+                <label for="auth-email">
+                    Email
+                    <input id="auth-email" name="email" type="email" placeholder="you@example.com" required>
+                </label>
+
+                <label for="auth-password">
+                    Password
+                    <input id="auth-password" name="password" type="password" placeholder="Minimum 6 characters" required>
+                </label>
+
+                <button type="submit" class="solid-button wide-button" id="auth-submit">Create account</button>
+                <p class="form-message" id="auth-message" aria-live="polite"></p>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal hidden" id="payment-modal" aria-hidden="true">
+        <div class="modal-panel payment-panel">
+            <button type="button" class="close-button" id="close-payment-modal" aria-label="Close payment modal">
+                &times;
+            </button>
+
+            <p class="eyebrow">UPI only checkout</p>
+            <h2 id="payment-title">Complete your payment</h2>
+            <p class="modal-text" id="payment-subtitle">
+                Noters accepts only UPI payments. The 20% platform fee is included in the listing total below.
+            </p>
+
+            <div class="payment-grid">
+                <div class="payment-card">
+                    <span>Listing</span>
+                    <strong id="payment-listing-title">Choose a listing</strong>
+                </div>
+                <div class="payment-card">
+                    <span>Total to pay</span>
+                    <strong id="payment-total-amount">₹0.00</strong>
+                </div>
+            </div>
+
+            <div class="payment-breakdown">
+                <div class="payment-line">
+                    <span>Seller receives 95%</span>
+                    <strong id="payment-seller-share">₹0.00</strong>
+                </div>
+                <div class="payment-line">
+                    <span>Platform fee 5%</span>
+                    <strong id="payment-platform-fee">₹0.00</strong>
+                </div>
+            </div>
+
+            <div class="payment-card payment-card-strong">
+                <span>Pay to UPI ID</span>
+                <strong id="payment-upi-id">noters@upi</strong>
+                <small id="payment-order-reference">Transaction reference will appear here.</small>
+            </div>
+
+            <a class="solid-button wide-button upi-link-button hidden" id="payment-open-upi" href="#" target="_self">
+                Open UPI app
+            </a>
+
+            <form class="auth-form payment-form hidden" id="payment-form">
+                <label for="payment-reference">
+                    Enter your UPI transaction reference
+                    <input id="payment-reference" name="payment_reference" type="text" placeholder="Example: 431245678901" required>
+                </label>
+
+                <button type="submit" class="solid-button wide-button">Confirm payment</button>
+            </form>
+
+            <p class="form-message" id="payment-message" aria-live="polite"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
